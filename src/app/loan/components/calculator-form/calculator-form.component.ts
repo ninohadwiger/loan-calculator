@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CalculationPayload} from "../../models/calculation-payload.model";
 
 @Component({
@@ -24,12 +24,24 @@ export class CalculatorFormComponent implements OnInit {
   ];
 
   calculateFormGroup = new FormGroup({
-    monthlyIncome: new FormControl(800000),
-    requestedAmount: new FormControl(25000000),
+    monthlyIncome: new FormControl(800, [Validators.min(800)]),
+    requestedAmount: new FormControl(25000, [Validators.min(25000), Validators.max(50000)]),
     loanTerm: new FormControl(36, [Validators.min(36), Validators.max(360)]),
     children: new FormControl('NONE'),
     coapplicant: new FormControl('NONE'),
   })
+
+  get monthlyIncome(): AbstractControl | null {
+    return this.calculateFormGroup.get('monthlyIncome');
+  }
+
+  get requestedAmount(): AbstractControl | null {
+    return this.calculateFormGroup.get('requestedAmount');
+  }
+
+  get loanTerm(): AbstractControl | null {
+    return this.calculateFormGroup.get('loanTerm');
+  }
 
   constructor() {
   }
