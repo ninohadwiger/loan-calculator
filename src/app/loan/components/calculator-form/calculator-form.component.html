@@ -1,0 +1,34 @@
+<form (ngSubmit)="calculate()" [formGroup]="calculateFormGroup" class="p-fluid formgrid grid">
+
+  <div class="field col-6">
+    <label for="monthlyIncome">Monthly Income</label>
+    <p-inputNumber id="monthlyIncome" inputId="currency-us" mode="currency" currency="EUR" locale="en-US"
+                   formControlName="monthlyIncome">
+    </p-inputNumber>
+  </div>
+
+  <div class="field col-6">
+    <label for="requestedAmount">Requested Amount</label>
+    <p-inputNumber id="requestedAmount" inputId="currency-us" mode="currency" currency="EUR" locale="en-US"
+                   formControlName="requestedAmount">
+    </p-inputNumber>
+  </div>
+
+  <div class="field col-2">
+    <label for="loanTerm">Loan Term</label>
+    <p-inputNumber id="loanTerm" formControlName="loanTerm"></p-inputNumber>
+  </div>
+
+  <div class="field col-5">
+    <label for="children">Children</label>
+    <p-dropdown id="children" [options]="childrenOptions" formControlName="children"></p-dropdown>
+  </div>
+
+  <div class="field col-5">
+    <label for="coapplicant">Coapplicant</label>
+    <p-dropdown id="coapplicant" [options]="coapplicantOptions" formControlName="coapplicant"></p-dropdown>
+  </div>
+
+  <button pButton type="submit" label="Calculate" [disabled]="calculateFormGroup.invalid"></button>
+
+</form>
