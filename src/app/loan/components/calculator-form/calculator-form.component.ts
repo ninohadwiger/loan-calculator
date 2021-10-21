@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {CalculationPayload} from "../../models/calculation-payload.model";
 
 @Component({
   selector: 'app-calculator-form',
@@ -7,6 +8,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./calculator-form.component.scss']
 })
 export class CalculatorFormComponent implements OnInit {
+
+  @Output() calc = new EventEmitter<CalculationPayload>();
 
   childrenOptions = [
     {label: 'None', value: 'NONE'},
@@ -21,8 +24,8 @@ export class CalculatorFormComponent implements OnInit {
   ];
 
   calculateFormGroup = new FormGroup({
-    monthlyIncome: new FormControl(),
-    requestedAmount: new FormControl(),
+    monthlyIncome: new FormControl(800000),
+    requestedAmount: new FormControl(25000000),
     loanTerm: new FormControl(36, [Validators.min(36), Validators.max(360)]),
     children: new FormControl('NONE'),
     coapplicant: new FormControl('NONE'),
@@ -35,6 +38,6 @@ export class CalculatorFormComponent implements OnInit {
   }
 
   calculate() {
-    console.log(this.calculateFormGroup.value);
+    this.calc.emit(this.calculateFormGroup.value);
   }
 }

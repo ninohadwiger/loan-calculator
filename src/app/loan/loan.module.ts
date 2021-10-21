@@ -9,6 +9,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {CardModule} from "primeng/card";
 import {InputTextModule} from "primeng/inputtext";
 import {TooltipModule} from "primeng/tooltip";
+import {HttpClientModule} from "@angular/common/http";
+import {MessageModule} from "primeng/message";
+import {ToastModule} from "primeng/toast";
 
 
 
@@ -22,6 +25,9 @@ import {TooltipModule} from "primeng/tooltip";
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
+    MessageModule,
+    ToastModule,
     InputNumberModule,
     DropdownModule,
     ButtonModule,
