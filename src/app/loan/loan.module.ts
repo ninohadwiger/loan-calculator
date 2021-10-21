@@ -8,6 +8,7 @@ import {ButtonModule} from "primeng/button";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CardModule} from "primeng/card";
 import {InputTextModule} from "primeng/inputtext";
+import {TooltipModule} from "primeng/tooltip";
 
 
 
@@ -26,7 +27,8 @@ import {InputTextModule} from "primeng/inputtext";
     ButtonModule,
     ReactiveFormsModule,
     CardModule,
-    InputTextModule
+    InputTextModule,
+    TooltipModule
   ]
 })
 export class LoanModule { }
