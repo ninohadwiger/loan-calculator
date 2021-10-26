@@ -1,69 +1,70 @@
-<form (ngSubmit)="calculate()" [formGroup]="calculateFormGroup" class="p-fluid formgrid grid">
+<form (ngSubmit)="emitCalculateEvent()" [formGroup]="calculateFormGroup" class="p-fluid">
 
-  <div class="field col-6">
+  <div class="field">
     <label for="monthlyIncome">Monthly Income <i pTooltip="Minimum: 800 €" tooltipPosition="top"
                                                  class="pi pi-info-circle"></i></label>
     <p-inputNumber id="monthlyIncome" inputId="currency-us" mode="currency" currency="EUR" locale="en-US"
                    formControlName="monthlyIncome">
     </p-inputNumber>
 
-    <div *ngIf="monthlyIncome && monthlyIncome.invalid && (monthlyIncome?.dirty || monthlyIncome?.touched)"
+    <div *ngIf="monthlyIncomeControl.invalid && (monthlyIncomeControl.dirty || monthlyIncomeControl.touched)"
          class="alert alert-danger">
 
-      <small *ngIf="monthlyIncome?.errors?.min" class="p-error">
+      <small *ngIf="monthlyIncomeControl.errors?.min" class="p-error">
         Monthly income is too low. Minimum income is 800 EUR
       </small>
     </div>
   </div>
 
-  <div class="field col-6">
-    <label for="requestedAmount">Requested Amount <i pTooltip="Minimum: 25,000 €" tooltipPosition="top"
+  <div class="field">
+    <label for="requestedAmount">Requested Amount <i pTooltip="Minimum: 25,000 € Maximum: 50,000 €"
+                                                     tooltipPosition="top"
                                                      class="pi pi-info-circle"></i></label>
     <p-inputNumber id="requestedAmount" inputId="currency-us" mode="currency" currency="EUR" locale="en-US"
                    formControlName="requestedAmount">
     </p-inputNumber>
 
-    <div *ngIf="requestedAmount?.invalid && (requestedAmount?.dirty || requestedAmount?.touched)"
+    <div *ngIf="requestedAmountControl.invalid && (requestedAmountControl.dirty || requestedAmountControl.touched)"
          class="alert alert-danger">
 
-      <small *ngIf="requestedAmount?.errors?.min" class="p-error">
+      <small *ngIf="requestedAmountControl.errors?.min" class="p-error">
         Requested Amount too low. Minimum loan of 25,000 available
       </small>
 
-      <small *ngIf="requestedAmount?.errors?.max" class="p-error">
+      <small *ngIf="requestedAmountControl.errors?.max" class="p-error">
         Requested Amount too high. Maximum loan of 50,000 available
       </small>
     </div>
   </div>
 
-  <div class="field col">
-    <label for="loanTerm">Loan Term <i pTooltip="Minimum: 36 months, Maximum: 360 months" tooltipPosition="top"
+  <div class="field">
+    <label for="loanTerm">Loan Term <i pTooltip="Minimum: 36 months Maximum: 360 months" tooltipPosition="top"
                                        class="pi pi-info-circle"></i></label>
     <div class="p-inputgroup">
       <p-inputNumber id="loanTerm" formControlName="loanTerm"></p-inputNumber>
       <span class="p-inputgroup-addon">months</span>
     </div>
 
-    <div *ngIf="loanTerm?.invalid && (loanTerm?.dirty || loanTerm?.touched)"
+    <div *ngIf="loanTermControl.invalid && (loanTermControl.dirty || loanTermControl.touched)"
          class="alert alert-danger">
 
-      <small *ngIf="loanTerm?.errors?.min" class="p-error">
+      <small *ngIf="loanTermControl.errors?.min" class="p-error">
         Loan term is too short. Minimum term: 36 months
       </small>
 
-      <small *ngIf="loanTerm?.errors?.max" class="p-error">
+      <small *ngIf="loanTermControl.errors?.max" class="p-error">
         Loan term is too long. Maximum term: 360 months
       </small>
     </div>
 
   </div>
 
-  <div class="field col">
+  <div class="field">
     <label for="children">Children</label>
     <p-dropdown id="children" [options]="childrenOptions" formControlName="children"></p-dropdown>
   </div>
 
-  <div class="field col">
+  <div class="field">
     <label for="coapplicant">Coapplicant</label>
     <p-dropdown id="coapplicant" [options]="coapplicantOptions" formControlName="coapplicant"></p-dropdown>
   </div>

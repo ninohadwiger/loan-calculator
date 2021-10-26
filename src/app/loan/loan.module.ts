@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CalculatorFormComponent } from './components/calculator-form/calculator-form.component';
-import { LoanCalculatorComponent } from './containers/loan-calculator/loan-calculator.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {CalculatorFormComponent} from './components/calculator-form/calculator-form.component';
+import {LoanCalculatorComponent} from './containers/loan-calculator/loan-calculator.component';
 import {InputNumberModule} from "primeng/inputnumber";
 import {DropdownModule} from "primeng/dropdown";
 import {ButtonModule} from "primeng/button";
@@ -12,13 +12,16 @@ import {TooltipModule} from "primeng/tooltip";
 import {HttpClientModule} from "@angular/common/http";
 import {MessageModule} from "primeng/message";
 import {ToastModule} from "primeng/toast";
-
+import {CalculatorResultComponent} from './components/calculator-result/calculator-result.component';
+import {ProgressBarModule} from "primeng/progressbar";
+import {SliderModule} from "primeng/slider";
 
 
 @NgModule({
   declarations: [
     CalculatorFormComponent,
-    LoanCalculatorComponent
+    LoanCalculatorComponent,
+    CalculatorResultComponent
   ],
   exports: [
     LoanCalculatorComponent
@@ -34,7 +37,9 @@ import {ToastModule} from "primeng/toast";
     ReactiveFormsModule,
     CardModule,
     InputTextModule,
-    TooltipModule
+    TooltipModule,
+    ProgressBarModule,
+    SliderModule
   ]
 })
 export class LoanModule { }

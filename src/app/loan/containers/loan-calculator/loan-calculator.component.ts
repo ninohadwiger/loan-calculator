@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {LoanCalculatorService} from "../../services/loan-calculator.service";
 import {CalculationPayload} from "../../models/calculation-payload.model";
 import {MessageService} from 'primeng/api';
-import {catchError} from "rxjs/operators";
-import {of} from "rxjs";
+import {catchError, tap} from "rxjs/operators";
+import {BehaviorSubject, Observable, of} from "rxjs";
+import {CalculationResult} from "../../models/calculation-result.model";
 
 @Component({
   selector: 'app-loan-calculator',
@@ -12,6 +13,9 @@ import {of} from "rxjs";
   providers: [MessageService]
 })
 export class LoanCalculatorComponent implements OnInit {
+
+  calculationResult$?: Observable<CalculationResult>;
+  loading$ = new BehaviorSubject(false);
 
   constructor(
     private loanCalculatorService: LoanCalculatorService,
@@ -23,12 +27,15 @@ export class LoanCalculatorComponent implements OnInit {
   }
 
   calculateLoan(payload: CalculationPayload) {
-    this.loanCalculatorService.calculate(payload)
-      .pipe(catchError(error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Something went wrong.'})
-        return of(error)
-      }))
-      .subscribe(console.log);
+    this.loading$.next(true);
+    this.calculationResult$ = this.loanCalculatorService.calculate(payload)
+      .pipe(
+        catchError(error => {
+          this.messageService.add({severity: 'error', summary: 'Error', detail: 'Something went wrong.'})
+          return of(error)
+        }),
+        tap(_ => this.loading$.next(false))
+      );
   }
 
 }

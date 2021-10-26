@@ -1,4 +1,11 @@
 <p-toast></p-toast>
-<p-card header="Loan Calculator">
-  <app-calculator-form (calc)="calculateLoan($event)"></app-calculator-form>
-</p-card>
+
+<div class="grid">
+  <p-card class="col-4" header="Loan Calculator">
+    <app-calculator-form (calculate)="calculateLoan($event)"></app-calculator-form>
+  </p-card>
+
+  <p-card class="col-8">
+    <app-calculator-result [loading]="loading$ | async" [result]="calculationResult$ | async"></app-calculator-result>
+  </p-card>
+</div>
