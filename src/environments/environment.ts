@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://homework.fdp.workers.dev/',
+  apiUrl: '/api',
   apiKey: 'swb-222222'
 };
 

@@ -1,0 +1,9 @@
+{
+  "/api": {
+    "target": "https://homework.fdp.workers.dev/",
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
+  }
+}
