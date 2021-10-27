@@ -16,7 +16,6 @@ import {CalculatorResultComponent} from './components/calculator-result/calculat
 import {ProgressBarModule} from "primeng/progressbar";
 import {SliderModule} from "primeng/slider";
 
-
 @NgModule({
   declarations: [
     CalculatorFormComponent,
@@ -29,12 +28,14 @@ import {SliderModule} from "primeng/slider";
   imports: [
     CommonModule,
     HttpClientModule,
+    ReactiveFormsModule,
+
+    // prime ng imports
     MessageModule,
     ToastModule,
     InputNumberModule,
     DropdownModule,
     ButtonModule,
-    ReactiveFormsModule,
     CardModule,
     InputTextModule,
     TooltipModule,

@@ -2,11 +2,13 @@
 <ng-container>
   <div>
     <label>Loan amount</label>
-    <span>{{ result ? (result.loanAmount / 1000 | currency: 'EUR') : 0 | currency: 'EUR' }}</span>
+    <span *ngIf="result">{{ result.loanAmount / 1000 | currency: 'EUR' }}</span>
+    <span *ngIf="!result">{{ 0 | currency: 'EUR' }}</span>
   </div>
   <div>
     <label>Interest rate</label>
-    <span>{{ result ? (result.interestRate / 100000 | percent: '1.2') : 0 | percent }}</span>
+    <span *ngIf="result">{{ result.interestRate / 100000 | percent: '1.2' }}</span>
+    <span *ngIf="!result">{{ 0 | percent: '1.2' }}</span>
   </div>
 </ng-container>
 

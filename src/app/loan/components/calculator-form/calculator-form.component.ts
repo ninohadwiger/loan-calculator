@@ -11,12 +11,16 @@ export class CalculatorFormComponent implements OnInit {
 
   @Output() calculate = new EventEmitter<CalculationPayload>();
 
+  // these values would probably be fetched from a backend or stored in
+  // a config file in an actual project. Hardcoded in this example.
   childrenOptions = [
     {label: 'None', value: 'NONE'},
     {label: 'Single', value: 'SINGLE'},
     {label: 'Multiple', value: 'MULTIPLE'}
   ]
 
+  // these values would probably be fetched from a backend or stored in
+  // a config file in an actual project. Hardcoded in this example.
   coapplicantOptions = [
     {label: 'None', value: 'NONE'},
     {label: 'Single Borrower', value: 'SINGLE_BORROWER'},
@@ -54,6 +58,8 @@ export class CalculatorFormComponent implements OnInit {
   emitCalculateEvent() {
     this.calculate.emit({
       ...this.calculateFormGroup.value,
+
+      // amount numbers multiplied by 1000 in order to achieve three spaces after comma
       monthlyIncome: this.monthlyIncomeControl.value * 1000,
       requestedAmount: this.requestedAmountControl.value * 1000
     });

@@ -30,9 +30,9 @@ export class LoanCalculatorComponent implements OnInit {
     this.loading$.next(true);
     this.calculationResult$ = this.loanCalculatorService.calculate(payload)
       .pipe(
-        catchError(error => {
+        catchError(_ => {
           this.messageService.add({severity: 'error', summary: 'Error', detail: 'Something went wrong.'})
-          return of(error)
+          return of({loanAmount: 0, interestRate: 0} as CalculationResult);
         }),
         tap(_ => this.loading$.next(false))
       );
