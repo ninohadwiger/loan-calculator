@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LoanCalculatorComponent } from './loan-calculator.component';
+import {LoanCalculatorComponent} from './loan-calculator.component';
+import {LoanCalculatorService} from "../../services/loan-calculator.service";
+import {HttpClientModule} from "@angular/common/http";
 
 describe('LoanCalculatorComponent', () => {
   let component: LoanCalculatorComponent;
@@ -8,7 +10,9 @@ describe('LoanCalculatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoanCalculatorComponent ]
+      declarations: [LoanCalculatorComponent],
+      providers: [LoanCalculatorService],
+      imports: [HttpClientModule]
     })
     .compileComponents();
   });
