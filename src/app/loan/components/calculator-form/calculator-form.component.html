@@ -1,7 +1,7 @@
 <form (ngSubmit)="emitCalculateEvent()" [formGroup]="calculateFormGroup" class="p-fluid">
 
   <div class="field">
-    <label for="monthlyIncome">Monthly Income <i pTooltip="Minimum: 800 €" tooltipPosition="top"
+    <label for="monthlyIncome">Monthly Income <i pTooltip="Minimum: 500 €" tooltipPosition="top"
                                                  class="pi pi-info-circle"></i></label>
     <p-inputNumber id="monthlyIncome" inputId="currency-us" mode="currency" currency="EUR" locale="en-US"
                    formControlName="monthlyIncome">
@@ -11,13 +11,13 @@
          class="alert alert-danger">
 
       <small *ngIf="monthlyIncomeControl.errors?.min" class="p-error">
-        Monthly income is too low. Minimum income is 800 EUR
+        Monthly income is too low. Minimum income is 500 EUR
       </small>
     </div>
   </div>
 
   <div class="field">
-    <label for="requestedAmount">Requested Amount <i pTooltip="Minimum: 25,000 € Maximum: 50,000 €"
+    <label for="requestedAmount">Requested Amount <i pTooltip="Minimum: 20,000 € Maximum: 50,000 €"
                                                      tooltipPosition="top"
                                                      class="pi pi-info-circle"></i></label>
     <p-inputNumber id="requestedAmount" inputId="currency-us" mode="currency" currency="EUR" locale="en-US"
@@ -28,7 +28,7 @@
          class="alert alert-danger">
 
       <small *ngIf="requestedAmountControl.errors?.min" class="p-error">
-        Requested Amount too low. Minimum loan of 25,000 available
+        Requested Amount too low. Minimum loan of 20,000 available
       </small>
 
       <small *ngIf="requestedAmountControl.errors?.max" class="p-error">

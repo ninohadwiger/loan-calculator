@@ -27,12 +27,12 @@ export class CalculatorFormComponent implements OnInit {
     {label: 'Multiple Borrowers', value: 'MULTIPLE_BORROWERS'},
   ];
 
-  monthlyIncomeControl = new FormControl(800, [
-    Validators.min(800)
+  monthlyIncomeControl = new FormControl(500, [
+    Validators.min(500)
   ]);
 
-  requestedAmountControl = new FormControl(25000, [
-    Validators.min(25000),
+  requestedAmountControl = new FormControl(20000, [
+    Validators.min(20000),
     Validators.max(50000)
   ]);
 
